@@ -33,6 +33,8 @@ public class StudentRegistrationFormTests {
         $("[id=currentAddress]").setValue("ehujimkpkjihuygtf");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("#react-select-4-input").setValue("Delhi").pressEnter();
+
+        //button
         $("[id=submit]").click();
     }
 }
