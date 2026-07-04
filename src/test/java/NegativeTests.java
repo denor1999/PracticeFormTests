@@ -43,4 +43,16 @@ public class NegativeTests {
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("[id=submit]").shouldBe(visible).click();
     }
+
+    @Test
+    void invalidEmailTest(){
+        Selenide.open("https://demoqa.com/automation-practice-form");
+        $("[id=firstName]").setValue("Ivan");
+        $("[id=lastName]").setValue("Ozhgikhin");
+        $("[id=userEmail]").setValue("aweoif");
+        $("input[id=gender-radio-1]").click();
+        $("input[id=userNumber]").setValue("1234567890");
+        $("#react-select-3-input").setValue("NCR").pressEnter();
+        $("[id=submit]").shouldBe(visible).click();
+    }
 }
