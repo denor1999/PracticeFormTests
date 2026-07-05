@@ -24,8 +24,6 @@ public class SuccessfulEnterFormTests {
         $("[value=Male]").click();
         $("input[id=userNumber]").setValue("1234567890");
         $("#submit").scrollTo().click();
-
-        switchTo().activeElement();
         $("table").shouldHave(text("Ivan Ozhgikhin"));
         $("table").shouldHave(text("Male"));
         $("table").shouldHave(text("1234567890"));
