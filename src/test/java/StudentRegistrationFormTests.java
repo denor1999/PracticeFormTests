@@ -2,13 +2,10 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.cssClass;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 
 
 public class StudentRegistrationFormTests {
@@ -46,7 +43,6 @@ public class StudentRegistrationFormTests {
 
         //button "Submit"
         $("[id=submit]").click();
-        switchTo().activeElement();
         $("table").shouldHave(text("Ivan Ozhgikhin"));
         $("table").shouldHave(text("aweoif@aioevn.erg"));
         $("table").shouldHave(text("Male"));
