@@ -2,57 +2,58 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class NegativeTests {
 
     @BeforeAll
-    static void startup(){
+    static void setup(){
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1240";
-    }
-
-    @Test
-    void emptyEmailTest(){
-        Selenide.open("https://demoqa.com/automation-practice-form");
-        $("[id=firstName]").setValue("Ivan");
-        $("[id=lastName]").setValue("Ozhgikhin");
-        $("input[id=userNumber]").setValue("1234567890");
-        $("#react-select-3-input").setValue("NCR").pressEnter();
-        $("[id=submit]").shouldBe(visible).click();
+        Configuration.baseUrl = "https://demoqa.com";
     }
 
     @Test
     void emptyMobileNumberTest(){
-        Selenide.open("https://demoqa.com/automation-practice-form");
+        Selenide.open("/automation-practice-form");
         $("[id=firstName]").setValue("Ivan");
         $("[id=lastName]").setValue("Ozhgikhin");
-        $("input[id=gender-radio-1]").click();
+        $("input[value=Male]").click();
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("[id=submit]").shouldBe(visible).click();
+
+        $("#userNumber").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+
     }
 
     @Test
     void emptyFirstNameAndLastNameTest(){
-        Selenide.open("https://demoqa.com/automation-practice-form");
-        $("input[id=gender-radio-1]").click();
+        Selenide.open("/automation-practice-form");
+        $("[value=Male]").click();
         $("input[id=userNumber]").setValue("1234567890");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("[id=submit]").shouldBe(visible).click();
+
+        $("#firstName").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        $("#lastName").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
     }
 
     @Test
     void invalidEmailTest(){
-        Selenide.open("https://demoqa.com/automation-practice-form");
+        Selenide.open("/automation-practice-form");
         $("[id=firstName]").setValue("Ivan");
         $("[id=lastName]").setValue("Ozhgikhin");
         $("[id=userEmail]").setValue("aweoif");
-        $("input[id=gender-radio-1]").click();
+        $("[value=Male]").click();
         $("input[id=userNumber]").setValue("1234567890");
         $("#react-select-3-input").setValue("NCR").pressEnter();
         $("[id=submit]").shouldBe(visible).click();
+
+        $("#userEmail").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+
     }
 }
