@@ -1,29 +1,24 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static TestData.FormTestData.*;
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.*;
 
-public class NegativeTests {
-
-    @BeforeAll
-    static void setup(){
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "1920x1240";
-        Configuration.baseUrl = "https://demoqa.com";
-    }
+public class NegativeTests extends TestBase{
 
     @Test
     void emptyMobileNumberTest(){
-        Selenide.open("/automation-practice-form");
-        $("[id=firstName]").setValue("Ivan");
-        $("[id=lastName]").setValue("Ozhgikhin");
+        open("/automation-practice-form");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
         $("input[value=Male]").click();
         $("#react-select-3-input").setValue("NCR").pressEnter();
-        $("[id=submit]").shouldBe(visible).click();
+        $("#submit").shouldBe(visible).click();
 
         $("#userNumber").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
 
@@ -31,11 +26,11 @@ public class NegativeTests {
 
     @Test
     void emptyFirstNameAndLastNameTest(){
-        Selenide.open("/automation-practice-form");
+        open("/automation-practice-form");
         $("[value=Male]").click();
-        $("input[id=userNumber]").setValue("1234567890");
+        $("input[id=userNumber]").setValue(userNumber);
         $("#react-select-3-input").setValue("NCR").pressEnter();
-        $("[id=submit]").shouldBe(visible).click();
+        $("#submit").shouldBe(visible).click();
 
         $("#firstName").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         $("#lastName").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
@@ -43,14 +38,14 @@ public class NegativeTests {
 
     @Test
     void invalidEmailTest(){
-        Selenide.open("/automation-practice-form");
-        $("[id=firstName]").setValue("Ivan");
-        $("[id=lastName]").setValue("Ozhgikhin");
-        $("[id=userEmail]").setValue("aweoif");
+        open("/automation-practice-form");
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#userEmail").setValue(invalidUserEmail);
         $("[value=Male]").click();
-        $("input[id=userNumber]").setValue("1234567890");
+        $("input[id=userNumber]").setValue(userNumber);
         $("#react-select-3-input").setValue("NCR").pressEnter();
-        $("[id=submit]").shouldBe(visible).click();
+        $("#submit").shouldBe(visible).click();
 
         $("#userEmail").shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
 
