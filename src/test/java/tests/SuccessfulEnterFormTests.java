@@ -17,6 +17,7 @@ public class SuccessfulEnterFormTests extends TestBase {
         $("[value=Male]").click();
         $("input[id=userNumber]").setValue(userNumber);
         $("#submit").scrollTo().click();
+
         $("table").shouldHave(text("Ivan Ozhgikhin"));
         $("table").shouldHave(text("Male"));
         $("table").shouldHave(text("1234567890"));
