@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 
-import static TestData.FormTestData.*;
+import static testdata.FormTestData.*;
 import static com.codeborne.selenide.Condition.cssValue;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
