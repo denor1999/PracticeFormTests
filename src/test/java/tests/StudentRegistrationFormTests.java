@@ -16,16 +16,19 @@ public class StudentRegistrationFormTests extends TestBase {
         $("[id=firstName]").setValue(firstName);
         $("[id=lastName]").setValue(lastName);
         $("[id=userEmail]").setValue(correctUserEmail);
-        $("[id=genterWrapper]").find(byText("Male")).click();
+        $("[id=genterWrapper]").find(byText(gender)).click();
         $("[id=userNumber]").setValue(userNumber);
-        $("[id=dateOfBirthInput]").setValue("05 Jul 2026").pressEnter();
+        $("[id=dateOfBirthInput]").click();
+        $("[class=react-datepicker__month-select]").$(byText(monthOdBirth)).click();
+        $("[class=react-datepicker__year-select]").$(byText(yearOdBirth)).click();
+        $$("[class=react-datepicker__week").find(text(dayOfBirth)).click();
 
         //<div class="subjects-auto-complete__input-container css-19bb58m" data-value=""><input class="subjects-auto-complete__input" autocapitalize="none" autocomplete="off" autocorrect="off" id="subjectsInput" spellcheck="false" tabindex="0" aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" role="combobox" aria-activedescendant="" aria-describedby="react-select-2-placeholder" type="text" value="" style="color: inherit; background: 0px center; opacity: 1; width: 100%; grid-area: 1 / 2; font: inherit; min-width: 2px; border: 0px; margin: 0px; outline: 0px; padding: 0px;"></div>
         $("[id=subjectsInput]").press(subjects[0]).pressEnter();
         $("[id=subjectsInput]").press(subjects[1]).pressEnter();
 
-        $$("[id=hobbiesWrapper]").find(text("Sports")).click();
-        $$("[id=hobbiesWrapper]").find(text("Music")).click();
+        $("[id=hobbiesWrapper]").find(byText(hobbies[0])).click();
+        $("[id=hobbiesWrapper]").find(byText(hobbies[1])).click();
 
         //<input label="Select picture" lang="en" id="uploadPicture" class="form-control" type="file">
         $("[id=uploadPicture]").uploadFromClasspath(picture);
@@ -39,14 +42,14 @@ public class StudentRegistrationFormTests extends TestBase {
 
         $("table").shouldHave(text(firstName + " " + lastName));
         $("table").shouldHave(text(correctUserEmail));
-        $("table").shouldHave(text("Male"));
+        $("table").shouldHave(text(gender));
         $("table").shouldHave(text(userNumber));
-        $("table").shouldHave(text("05 July,2026"));
-        $("table").shouldHave(text("Maths, English"));
-        $("table").shouldHave(text("Sports, Music"));
+        $("table").shouldHave(text(dateOfBirth));
+        $("table").shouldHave(text(subjects[0] + ", " + subjects[1]));
+        $("table").shouldHave(text(hobbies[0] + ", " + hobbies[1]));
         $("table").shouldHave(text(picture));
         $("table").shouldHave(text(currentAddress));
-        $("table").shouldHave(text(state + city));
+        $("table").shouldHave(text(state + " " + city));
 
     }
 
