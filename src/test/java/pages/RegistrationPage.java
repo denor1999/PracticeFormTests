@@ -5,26 +5,28 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.CollectionCondition.texts;
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.cssValue;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
     CalendarComponent calendar = new CalendarComponent();
 
-    public SelenideElement firstNameInput = $("[id=firstName]");
-    public SelenideElement lastNameInput = $("[id=lastName]");
-    public SelenideElement userEmailInput = $("[id=userEmail]");
-    public SelenideElement genderContainer = $("[id=genterWrapper]");
-    public SelenideElement userNumberInput = $("[id=userNumber]");
-    public SelenideElement stateSelect = $("[id=react-select-3-input]");
-    public SelenideElement citySelect = $("[id=react-select-4-input]");
-    public SelenideElement subjectsInput = $("[id=subjectsInput]");
-    public SelenideElement hobbiesInput = $("[id=hobbiesWrapper]");
-    public SelenideElement pictureResource = $("[id=uploadPicture]");
-    public SelenideElement userAddress = $("[id=currentAddress]");
-    public SelenideElement submitButton = $("[id=submit]");
-    public ElementsCollection tableOfResults = $$("table");
+    private final SelenideElement firstNameInput = $("[id=firstName]");
+    private final SelenideElement lastNameInput = $("[id=lastName]");
+    private final SelenideElement userEmailInput = $("[id=userEmail]");
+    private final SelenideElement genderContainer = $("[id=genterWrapper]");
+    private final SelenideElement userNumberInput = $("[id=userNumber]");
+    private final SelenideElement dateOfBirthInput = $("[id=dateOfBirthInput]");
+    private final SelenideElement stateSelect = $("[id=react-select-3-input]");
+    private final SelenideElement citySelect = $("[id=react-select-4-input]");
+    private final SelenideElement subjectsInput = $("[id=subjectsInput]");
+    private final SelenideElement hobbiesInput = $("[id=hobbiesWrapper]");
+    private final SelenideElement pictureResource = $("[id=uploadPicture]");
+    private final SelenideElement userAddress = $("[id=currentAddress]");
+    private final SelenideElement submitButton = $("[id=submit]");
+    private final ElementsCollection tableOfResults = $$("table");
 
     public RegistrationPage openPage(){
         open("/automation-practice-form");
@@ -57,7 +59,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setDateOfBirth(String day, String month, String year) {
-        $("[id=dateOfBirthInput]").click();
+        dateOfBirthInput.click();
         calendar.setDateOfBirth(day, month, year);
         return this;
     }
@@ -93,11 +95,17 @@ public class RegistrationPage {
     }
 
     public void submitForm() {
-        submitButton.click();
+        submitButton.scrollTo().click();
     }
 
     public RegistrationPage checkResults(String value) {
         tableOfResults.shouldHave(texts(value));
+        return this;
+    }
+
+    public RegistrationPage checkErrorFieldCondition(String value) {
+        SelenideElement fieldCondition = $("[id=" + value + "]");
+        fieldCondition.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 

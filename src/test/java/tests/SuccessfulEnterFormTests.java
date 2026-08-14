@@ -1,25 +1,25 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static testdata.FormTestData.*;
 
 public class SuccessfulEnterFormTests extends TestBase {
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void successEnterFormTest(){
-        open("/automation-practice-form");
-        $("[id=firstName]").setValue(firstName);
-        $("[id=lastName]").setValue(lastName);
-        $("[value=Male]").click();
-        $("input[id=userNumber]").setValue(userNumber);
-        $("#submit").scrollTo().click();
+        registrationPage.openPage()
+                .typeUserFirstName(firstName)
+                .typeUserLastName(lastName)
+                .setGenderContainer(gender)
+                .typeUserNumber(userNumber)
+                .submitForm();
 
-        $("table").shouldHave(text("Ivan Ozhgikhin"));
-        $("table").shouldHave(text("Male"));
-        $("table").shouldHave(text("1234567890"));
+        registrationPage.checkResults(firstName + " " + lastName)
+                .checkResults(gender)
+                .checkResults(userNumber);
+
     }
 }

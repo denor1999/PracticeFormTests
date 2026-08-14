@@ -17,4 +17,9 @@ public class FormTestData {
     public static String picture = "picture.jpg";
     public static String state = "NCR";
     public static String city = "Delhi";
+
+    public static String firstNameLocator = "firstName";
+    public static String lastNameLocator = "lastName";
+    public static String userNumberLocator = "userNumber";
+    public static String userEmailLocator = "userEmail";
 }

@@ -1,29 +1,29 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.TextBoxPage;
 
 import static testdata.TextBoxTestData.*;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class SimpleFormTests extends TestBase{
+    TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
     void minimumFieldsEnterTest(){
-        open("/text-box");
-        $("#userName").setValue(userName);
-        $("#submit").click();
-        $("#name").shouldHave(text("Ivan"));
+        textBoxPage.openPage()
+                .typeUserName(userName)
+                .submitForm();
+
+        textBoxPage.checkResults(userName);
     }
 
     @Test
     void invalidEmailTest(){
-        open("/text-box");
-        $("#userEmail").setValue(invalidUserEmail);
-        $("#submit").click();
-        $(".mr-sm-2.field-error.form-control").shouldBe(visible);
+        textBoxPage.openPage()
+                .typeUserEmail(invalidUserEmail)
+                .submitForm();
+
+        textBoxPage.checkErrorFieldCondition(userEmailLocator);
     }
 
 }
