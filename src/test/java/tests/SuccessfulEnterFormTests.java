@@ -2,24 +2,24 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-
-import static testdata.FormTestData.*;
+import testdata.FormTestData;
 
 public class SuccessfulEnterFormTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
+    FormTestData userTest = new FormTestData();
 
     @Test
     void successEnterFormTest(){
         registrationPage.openPage()
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .setGenderContainer(gender)
-                .typeUserNumber(userNumber)
+                .typeUserFirstName(userTest.firstName)
+                .typeUserLastName(userTest.lastName)
+                .setGenderContainer(userTest.gender)
+                .typeUserNumber(userTest.userNumber)
                 .submitForm();
 
-        registrationPage.checkResults(firstName + " " + lastName)
-                .checkResults(gender)
-                .checkResults(userNumber);
+        registrationPage.checkResults(userTest.firstName + " " + userTest.lastName)
+                .checkResults(userTest.gender)
+                .checkResults(userTest.userNumber);
 
     }
 }

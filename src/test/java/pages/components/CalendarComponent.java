@@ -8,7 +8,7 @@ public class CalendarComponent {
     public void setDateOfBirth(String day, String month, String year) {
         $("[class=react-datepicker__month-select]").selectOption(month);
         $("[class=react-datepicker__year-select]").selectOption(year);
-        $$("[class=react-datepicker__week").find(text(day)).click();
+        $$("[class=react-datepicker__week]").find(text(day)).click();
     }
 
 }

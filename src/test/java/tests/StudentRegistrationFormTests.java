@@ -3,42 +3,40 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
-import static testdata.FormTestData.*;
-
+import testdata.FormTestData;
 
 public class StudentRegistrationFormTests extends TestBase {
-
     RegistrationPage registrationPage = new RegistrationPage();
+    FormTestData userTest = new FormTestData();
 
     @Test
     void endToEndPositiveTest(){
         registrationPage.openPage()
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserEmail(correctUserEmail)
-                .setGenderContainer(gender)
-                .typeUserNumber(userNumber)
-                .setDateOfBirth(dayOfBirth, monthOfBirth, yearOfBirth)
-                .setSubjects(subjects[0])
-                .setSubjects(subjects[1])
-                .setHobbies(hobbies[0])
-                .setHobbies(hobbies[1])
-                .setPicture(picture)
-                .typeUserAddress(currentAddress)
-                .setState(state)
-                .setCity(city)
+                .typeUserFirstName(userTest.firstName)
+                .typeUserLastName(userTest.lastName)
+                .typeUserEmail(userTest.correctUserEmail)
+                .setGenderContainer(userTest.gender)
+                .typeUserNumber(userTest.userNumber)
+//                .setDateOfBirth(userTest.setRandomDateOfBirth())
+                .setSubjects(userTest.randomSubject)
+                .setSubjects(userTest.randomSubject)
+                .setHobbies(userTest.randomHobby)
+                .setPicture(userTest.picture)
+                .typeUserAddress(userTest.currentAddress)
+                .setState(userTest.setRandomState())
+                .setCity(userTest.setRandomCity())
                 .submitForm();
 
-        registrationPage.checkResults(firstName + " " + lastName)
-                .checkResults(correctUserEmail)
-                .checkResults(gender)
-                .checkResults(userNumber)
-                .checkResults(dateOfBirth)
-                .checkResults(subjects[0] + ", " + subjects[1])
-                .checkResults(hobbies[0] + ", " + hobbies[1])
-                .checkResults(picture)
-                .checkResults(currentAddress)
-                .checkResults(state + " " + city);
+        registrationPage.checkResults(userTest.firstName + " " + userTest.lastName)
+                .checkResults(userTest.correctUserEmail)
+                .checkResults(userTest.gender)
+                .checkResults(userTest.userNumber)
+//                .checkResults(userTest.dateOfBirth[0] + " " + userTest.dateOfBirth[1] + "," + userTest.dateOfBirth[2])
+                .checkResults(userTest.randomSubject)
+                .checkResults(userTest.randomHobby)
+                .checkResults(userTest.picture)
+                .checkResults(userTest.currentAddress)
+                .checkResults(userTest.state + " " + userTest.city);
     }
 
 }

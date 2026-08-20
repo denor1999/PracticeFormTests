@@ -1,17 +1,17 @@
 package pages;
 
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.TableComponent;
 
-import static com.codeborne.selenide.CollectionCondition.texts;
 import static com.codeborne.selenide.Condition.cssValue;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationPage {
     CalendarComponent calendar = new CalendarComponent();
+    TableComponent tableOfResults = new TableComponent();
 
     private final SelenideElement firstNameInput = $("[id=firstName]");
     private final SelenideElement lastNameInput = $("[id=lastName]");
@@ -26,7 +26,6 @@ public class RegistrationPage {
     private final SelenideElement pictureResource = $("[id=uploadPicture]");
     private final SelenideElement userAddress = $("[id=currentAddress]");
     private final SelenideElement submitButton = $("[id=submit]");
-    private final ElementsCollection tableOfResults = $$("table");
 
     public RegistrationPage openPage(){
         open("/automation-practice-form");
@@ -58,9 +57,9 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setDateOfBirth(String day, String month, String year) {
+    public RegistrationPage setDateOfBirth(String[] values) {
         dateOfBirthInput.click();
-        calendar.setDateOfBirth(day, month, year);
+        calendar.setDateOfBirth(values[0], values[1], values[2]);
         return this;
     }
 
@@ -99,13 +98,13 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResults(String value) {
-        tableOfResults.shouldHave(texts(value));
+        tableOfResults.checkResults(value);
         return this;
     }
 
     public RegistrationPage checkErrorFieldCondition(String value) {
         SelenideElement fieldCondition = $("[id=" + value + "]");
-        fieldCondition.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
+        fieldCondition.shouldHave(cssValue("border-color", "rgb(25, 135, 84)"));
         return this;
     }
 

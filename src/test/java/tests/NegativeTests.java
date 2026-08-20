@@ -2,18 +2,20 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import testdata.FormTestData;
 
 import static testdata.FormTestData.*;
 
 public class NegativeTests extends TestBase{
     RegistrationPage registrationPage = new RegistrationPage();
+    FormTestData userTest = new FormTestData();
 
-        @Test
+    @Test
     void emptyMobileNumberTest(){
         registrationPage.openPage()
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .setGenderContainer(gender)
+                .typeUserFirstName(userTest.firstName)
+                .typeUserLastName(userTest.lastName)
+                .setGenderContainer(userTest.setRandomGender())
                 .submitForm();
 
         registrationPage.checkErrorFieldCondition(userNumberLocator);
@@ -23,8 +25,8 @@ public class NegativeTests extends TestBase{
     @Test
     void emptyFirstNameAndLastNameTest(){
         registrationPage.openPage()
-                .setGenderContainer(gender)
-                .typeUserNumber(userNumber)
+                .setGenderContainer(userTest.setRandomGender())
+                .typeUserNumber(userTest.userNumber)
                 .submitForm();
 
         registrationPage.checkErrorFieldCondition(firstNameLocator)
@@ -35,11 +37,11 @@ public class NegativeTests extends TestBase{
     @Test
     void invalidEmailTest(){
         registrationPage.openPage()
-                .typeUserFirstName(firstName)
-                .typeUserLastName(lastName)
-                .typeUserEmail(invalidUserEmail)
-                .setGenderContainer(gender)
-                .typeUserNumber(userNumber)
+                .typeUserFirstName(userTest.firstName)
+                .typeUserLastName(userTest.lastName)
+                .typeUserEmail(userTest.invalidUserEmail)
+                .setGenderContainer(userTest.setRandomGender())
+                .typeUserNumber(userTest.userNumber)
                 .submitForm();
 
         registrationPage.checkErrorFieldCondition(userEmailLocator);
