@@ -104,7 +104,7 @@ public class RegistrationPage {
 
     public RegistrationPage checkErrorFieldCondition(String value) {
         SelenideElement fieldCondition = $("[id=" + value + "]");
-        fieldCondition.shouldHave(cssValue("border-color", "rgb(25, 135, 84)"));
+        fieldCondition.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 
