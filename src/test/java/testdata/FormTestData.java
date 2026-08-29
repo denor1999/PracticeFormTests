@@ -32,9 +32,9 @@ public class FormTestData {
                                 "Accounting",
                                 "Hindi",
                                 "Civics"};
-    public String randomSubject = setRandomSubject();
+    public String selectedSubject = setRandomSubject();
     public String[] hobbies = {"Sports", "Reading", "Music"};
-    public String randomHobby = setRandomHobbies();
+    public String selectedHobby = setRandomHobbies();
     public String picture = "picture.jpg";
     public String state;
     public String city;

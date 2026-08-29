@@ -1,5 +1,7 @@
 package tests;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
@@ -11,6 +13,8 @@ public class StudentRegistrationFormTests extends TestBase {
 
     @Test
     void endToEndPositiveTest(){
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
         registrationPage.openPage()
                 .typeUserFirstName(userTest.firstName)
                 .typeUserLastName(userTest.lastName)
@@ -18,9 +22,8 @@ public class StudentRegistrationFormTests extends TestBase {
                 .setGenderContainer(userTest.gender)
                 .typeUserNumber(userTest.userNumber)
 //                .setDateOfBirth(userTest.setRandomDateOfBirth())
-                .setSubjects(userTest.randomSubject)
-                .setSubjects(userTest.randomSubject)
-                .setHobbies(userTest.randomHobby)
+                .setSubjects(userTest.selectedSubject)
+                .setHobbies(userTest.selectedHobby)
                 .setPicture(userTest.picture)
                 .typeUserAddress(userTest.currentAddress)
                 .setState(userTest.setRandomState())
@@ -32,8 +35,8 @@ public class StudentRegistrationFormTests extends TestBase {
                 .checkResults(userTest.gender)
                 .checkResults(userTest.userNumber)
 //                .checkResults(userTest.dateOfBirth[0] + " " + userTest.dateOfBirth[1] + "," + userTest.dateOfBirth[2])
-                .checkResults(userTest.randomSubject)
-                .checkResults(userTest.randomHobby)
+                .checkResults(userTest.selectedSubject)
+                .checkResults(userTest.selectedHobby)
                 .checkResults(userTest.picture)
                 .checkResults(userTest.currentAddress)
                 .checkResults(userTest.state + " " + userTest.city);

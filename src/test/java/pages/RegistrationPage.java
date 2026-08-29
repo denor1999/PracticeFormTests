@@ -22,7 +22,7 @@ public class RegistrationPage {
     private final SelenideElement stateSelect = $("[id=react-select-3-input]");
     private final SelenideElement citySelect = $("[id=react-select-4-input]");
     private final SelenideElement subjectsInput = $("[id=subjectsInput]");
-    private final SelenideElement hobbiesInput = $("[id=hobbiesWrapper]");
+    private final SelenideElement hobbiesInput = $("[id=hobbiesWrapper");
     private final SelenideElement pictureResource = $("[id=uploadPicture]");
     private final SelenideElement userAddress = $("[id=currentAddress]");
     private final SelenideElement submitButton = $("[id=submit]");
