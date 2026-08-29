@@ -44,7 +44,7 @@ public class NegativeTests extends TestBase{
                 .typeUserNumber(userTest.userNumber)
                 .submitForm();
 
-        registrationPage.checkErrorFieldCondition(userEmailLocator);
+        registrationPage.checkErrorEmailCondition(userEmailLocator);
 
     }
 }

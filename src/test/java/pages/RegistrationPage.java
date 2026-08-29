@@ -108,4 +108,10 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage checkErrorEmailCondition(String value) {
+        SelenideElement emailCondition = $("[id=" + value + "]");
+        emailCondition.shouldHave(cssValue("border-color", "rgb(25, 135, 84)"));
+        return this;
+    }
+
 }
