@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import pages.components.CalendarComponent;
 import pages.components.TableComponent;
 
@@ -27,87 +28,104 @@ public class RegistrationPage {
     private final SelenideElement userAddress = $("[id=currentAddress]");
     private final SelenideElement submitButton = $("[id=submit]");
 
+    @Step("Open registration page")
     public RegistrationPage openPage(){
         open("/automation-practice-form");
         return this;
     }
 
+    @Step("Fill first name {value}")
     public RegistrationPage typeUserFirstName(String value){
         firstNameInput.setValue(value);
         return this;
     }
 
+    @Step("Fill last name {value}")
     public RegistrationPage typeUserLastName(String value){
         lastNameInput.setValue(value);
         return this;
     }
 
+    @Step("Fill user email {value}")
     public RegistrationPage typeUserEmail(String value){
         userEmailInput.setValue(value);
         return this;
     }
 
+    @Step("Select user gender {value}")
     public RegistrationPage setGenderContainer(String value){
         genderContainer.find(byText(value)).click();
         return this;
     }
 
+    @Step("Fill user number {value}")
     public RegistrationPage typeUserNumber(String value){
         userNumberInput.setValue(value);
         return this;
     }
 
+    @Step("Select date of birth")
     public RegistrationPage setDateOfBirth(String[] values) {
         dateOfBirthInput.click();
         calendar.setDateOfBirth(values[0], values[1], values[2]);
         return this;
     }
 
+    @Step("Select subject {value}")
     public RegistrationPage setSubjects(String value) {
         subjectsInput.press(value).pressEnter();
         return this;
     }
 
+    @Step("Select hobby {value}")
     public RegistrationPage setHobbies(String value) {
         hobbiesInput.find(byText(value)).click();
         return this;
     }
 
+    @Step("Set picture {value}")
     public RegistrationPage setPicture(String value) {
         pictureResource.uploadFromClasspath(value);
         return this;
     }
 
+    @Step("Fill user address {value}")
     public RegistrationPage typeUserAddress (String value) {
         userAddress.setValue(value);
         return this;
     }
 
+    @Step("Select state {value}")
     public RegistrationPage setState(String value) {
         stateSelect.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Select city {value}")
     public RegistrationPage setCity(String value) {
         citySelect.setValue(value).pressEnter();
         return this;
     }
 
+    @Step("Submit form")
     public void submitForm() {
         submitButton.scrollTo().click();
     }
 
+    @Step("Chek result of filling field {value}")
     public RegistrationPage checkResults(String value) {
         tableOfResults.checkResults(value);
         return this;
     }
 
+    @Step("Check field condition")
     public RegistrationPage checkErrorFieldCondition(String value) {
         SelenideElement fieldCondition = $("[id=" + value + "]");
         fieldCondition.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
 
+    @Step("Check email field condition")
     public RegistrationPage checkErrorEmailCondition(String value) {
         SelenideElement emailCondition = $("[id=" + value + "]");
         emailCondition.shouldHave(cssValue("border-color", "rgb(25, 135, 84)"));

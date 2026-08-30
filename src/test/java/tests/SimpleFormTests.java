@@ -1,32 +1,56 @@
 package tests;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Test;
-import pages.TextBoxPage;
-import testdata.TextBoxTestData;
-import testdata.TextBoxTestData.*;
 
+import static io.qameta.allure.Allure.step;
 import static testdata.TextBoxTestData.userEmailLocator;
 
+@Feature("Text box tests")
 public class SimpleFormTests extends TestBase{
-    TextBoxPage textBoxPage = new TextBoxPage();
-    TextBoxTestData userTest = new TextBoxTestData();
 
     @Test
+    @Story("Enter form with minimum number of fields")
+    @Owner("denor1999")
     void minimumFieldsEnterTest(){
-        textBoxPage.openPage()
-                .typeUserName(userTest.userName)
-                .submitForm();
+        step("Open text box page", () -> {
+            textBoxPage.openPage();
+        });
 
-        textBoxPage.checkResults(userTest.userName);
+        step("Filling form", () -> {
+                textBoxPage.typeUserName(textBoxUserTest.userName);
+        });
+
+        step("Submit form", () -> {
+                textBoxPage.submitForm();
+        });
+
+        step("Check registration results", () -> {
+            textBoxPage.checkResults(textBoxUserTest.userName);
+        });
     }
 
     @Test
+    @Story("Enter form with invalid email")
+    @Owner("denor1999")
     void invalidEmailTest(){
-        textBoxPage.openPage()
-                .typeUserEmail(userTest.invalidUserEmail)
-                .submitForm();
+        step("Open text box page", () -> {
+            textBoxPage.openPage();
+        });
 
-        textBoxPage.checkErrorFieldCondition(userEmailLocator);
+        step("Filling form", () -> {
+            textBoxPage.typeUserEmail(textBoxUserTest.invalidUserEmail);
+        });
+
+        step("Submit form", () -> {
+            textBoxPage.submitForm();
+        });
+
+        step("Check email field condition", () -> {
+            textBoxPage.checkErrorFieldCondition(userEmailLocator);
+        });
     }
 
 }
