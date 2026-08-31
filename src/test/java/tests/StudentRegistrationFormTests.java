@@ -25,7 +25,7 @@ public class StudentRegistrationFormTests extends TestBase {
                     .typeUserEmail(userTest.correctUserEmail)
                     .setGenderContainer(userTest.gender)
                     .typeUserNumber(userTest.userNumber)
-//                  .setDateOfBirth(userTest.setRandomDateOfBirth())
+                    .setDateOfBirth(userTest.setRandomDateOfBirth())
                     .setSubjects(userTest.selectedSubject)
                     .setHobbies(userTest.selectedHobby)
                     .setPicture(userTest.picture)
