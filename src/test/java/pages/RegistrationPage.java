@@ -30,7 +30,7 @@ public class RegistrationPage {
 
     @Step("Open registration page")
     public RegistrationPage openPage(){
-        open(System.getProperty("relativeURL"));
+        open("/automation-practice-form");
         return this;
     }
 

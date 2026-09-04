@@ -17,7 +17,7 @@ public class TextBoxPage {
 
     @Step("Open text box page")
     public TextBoxPage openPage() {
-        open(System.getProperty("relativeURL"));
+        open("/text-box");
         return this;
     }
 

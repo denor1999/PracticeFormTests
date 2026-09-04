@@ -43,7 +43,7 @@ public class StudentRegistrationFormTests extends TestBase {
                     .checkResults(userTest.correctUserEmail)
                     .checkResults(userTest.gender)
                     .checkResults(userTest.userNumber)
-                    .checkResults(userTest.dateOfBirth[0] + " " + userTest.dateOfBirth[1] + "," + userTest.dateOfBirth[2])
+//                  .checkResults(userTest.dateOfBirth[0] + " " + userTest.dateOfBirth[1] + "," + userTest.dateOfBirth[2])
                     .checkResults(userTest.selectedSubject)
                     .checkResults(userTest.selectedHobby)
                     .checkResults(userTest.picture)

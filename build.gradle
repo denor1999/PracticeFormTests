@@ -30,14 +30,6 @@ dependencies {
     testRuntimeOnly "org.slf4j:slf4j-simple:1.7.29"
 }
 
-tasks.withType(Test) {
+test {
     useJUnitPlatform()
-    systemProperties(System.getProperties())
-
-    testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
-    }
 }
