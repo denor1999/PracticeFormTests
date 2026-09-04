@@ -31,6 +31,7 @@ public class TestBase {
         Configuration.baseUrl = System.getProperty("base_url", "https://demoqa.com");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browser_version");
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions chromeOptions = new ChromeOptions();
