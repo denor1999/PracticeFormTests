@@ -1,6 +1,6 @@
 package testdata;
 
-import net.datafaker.Faker;
+import com.github.javafaker.Faker;
 
 public class TextBoxTestData {
     private final Faker faker = new Faker();

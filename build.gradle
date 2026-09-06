@@ -22,7 +22,7 @@ allure {
 }
 
 dependencies {
-    testImplementation "net.datafaker:datafaker:2.7.0"
+    testImplementation("com.github.javafaker:javafaker:1.0.2")
     testImplementation "com.codeborne:selenide:7.16.2"
     testImplementation "org.junit.jupiter:junit-jupiter:5.11.4"
     testImplementation 'io.qameta.allure:allure-selenide:2.19.0'

@@ -65,9 +65,9 @@ public class RegistrationPage {
     }
 
     @Step("Select date of birth")
-    public RegistrationPage setDateOfBirth(String[] values) {
-        dateOfBirthInput.click();
-        calendar.setDateOfBirth(values[0], values[1], values[2]);
+    public RegistrationPage setDateOfBirth(String day, String month, String year) {
+        $(dateOfBirthInput).click();
+        calendar.setDateOfBirth(day, month, year);
         return this;
     }
 

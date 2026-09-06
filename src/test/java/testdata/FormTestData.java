@@ -1,7 +1,8 @@
 package testdata;
 
-import net.datafaker.Faker;
+import com.github.javafaker.Faker;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -17,7 +18,9 @@ public class FormTestData {
     public String[] genders = {"Male", "Female", "Other"};
     public String gender= setRandomGender();
     public String userNumber = faker.phoneNumber().subscriberNumber(10);
-    public String[] dateOfBirth;
+    public String day = generateDayOfBirth();
+    public String month = generateMonth();
+    public String year = generateYear();
     public String currentAddress = faker.address().fullAddress();
     public String[] subjects = {"Physics",
                                 "Chemistry",
@@ -44,11 +47,20 @@ public class FormTestData {
         return genders[index];
     }
 
-    public String[] setRandomDateOfBirth() {
-        LocalDate birthday = faker.timeAndDate().birthday();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM uuuu").withLocale(Locale.forLanguageTag("en"));
-        dateOfBirth = birthday.format(formatter).split(" ");
-        return dateOfBirth;
+    public String generateMonth() {
+        return faker.options().option("January", "February", "March", "April",
+                                        "May", "June", "July", "August",
+                                        "September", "October", "November", "December");
+    }
+
+    public String generateYear() {
+        Date birthDate = faker.date().birthday();
+        return new SimpleDateFormat("yyyy").format(birthDate);
+    }
+
+    public String generateDayOfBirth() {
+        Date birthDate = faker.date().birthday();
+        return new SimpleDateFormat("dd").format(birthDate);
     }
 
     public String setRandomSubject() {
