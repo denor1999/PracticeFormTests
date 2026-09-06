@@ -8,6 +8,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
 import pages.TextBoxPage;
@@ -34,9 +36,21 @@ public class TestBase {
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments(List.of("--disable-dev-shm-usage", "--no-sandbox"));
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
+        if (Configuration.browser.equals("chrome")) {
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments(List.of("--disable-dev-shm-usage", "--no-sandbox"));
+            capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        } else if (Configuration.browser.equals("firefox")) {
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            firefoxOptions.addArguments(List.of("--disable-dev-shm-usage", "--no-sandbox"));
+            capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, firefoxOptions);
+        } else {
+            EdgeOptions edgeOptions = new EdgeOptions();
+            edgeOptions.addArguments(List.of("--disable-dev-shm-usage", "--no-sandbox"));
+            capabilities.setCapability(EdgeOptions.CAPABILITY, edgeOptions);
+        }
+
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
