@@ -30,45 +30,45 @@ public class RegistrationPage {
     private final SelenideElement submitButton = $("[id=submit]");
 
     @Step("Open registration page")
-    public RegistrationPage openPage(){
+    public RegistrationPage openPage() {
         open(System.getProperty("form_path", "/automation-practice-form"));
         return this;
     }
 
     @Step("Fill first name {value}")
-    public RegistrationPage typeUserFirstName(String value){
+    public RegistrationPage typeUserFirstName(String value) {
         firstNameInput.setValue(value);
         return this;
     }
 
     @Step("Fill last name {value}")
-    public RegistrationPage typeUserLastName(String value){
+    public RegistrationPage typeUserLastName(String value) {
         lastNameInput.setValue(value);
         return this;
     }
 
     @Step("Fill user email {value}")
-    public RegistrationPage typeUserEmail(String value){
+    public RegistrationPage typeUserEmail(String value) {
         userEmailInput.setValue(value);
         return this;
     }
 
     @Step("Select user gender {value}")
-    public RegistrationPage setGenderContainer(String value){
+    public RegistrationPage setGenderContainer(String value) {
         genderContainer.find(byText(value)).click();
         return this;
     }
 
     @Step("Fill user number {value}")
-    public RegistrationPage typeUserNumber(String value){
+    public RegistrationPage typeUserNumber(String value) {
         userNumberInput.setValue(value);
         return this;
     }
 
     @Step("Select date of birth")
-    public RegistrationPage setDateOfBirth(String day, String month, String year) {
+    public RegistrationPage setDateOfBirth(String month, String year) {
         dateOfBirthInput.click();
-        calendar.setDateOfBirth(day, month, year);
+        calendar.setDateOfBirth(month, year);
         return this;
     }
 
@@ -95,7 +95,7 @@ public class RegistrationPage {
     }
 
     @Step("Fill user address {value}")
-    public RegistrationPage typeUserAddress (String value) {
+    public RegistrationPage typeUserAddress(String value) {
         userAddress.setValue(value);
         return this;
     }

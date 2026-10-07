@@ -11,14 +11,14 @@ import static io.qameta.allure.Allure.step;
 import static testdata.FormTestData.*;
 
 @Feature("Registration form tests")
-public class NegativeTests extends TestBase{
+public class NegativeTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     FormTestData userTest = new FormTestData();
 
     @Test
     @Story("Empty mobile number")
     @Owner("denor1999")
-    void emptyMobileNumberTest(){
+    void emptyMobileNumberTest() {
         step("Open registration page", () -> {
             registrationPage.openPage();
         });
@@ -30,7 +30,7 @@ public class NegativeTests extends TestBase{
         });
 
         step("Submit form", () -> {
-                    registrationPage.submitForm();
+            registrationPage.submitForm();
         });
 
         step("Check field condition", () -> {
@@ -42,13 +42,13 @@ public class NegativeTests extends TestBase{
     @Test
     @Story("Empty user first name and last name")
     @Owner("denor1999")
-    void emptyFirstNameAndLastNameTest(){
+    void emptyFirstNameAndLastNameTest() {
         step("Open registration page", () -> {
             registrationPage.openPage();
         });
         step("Filling registration form", () -> {
-        registrationPage.setGenderContainer(userTest.setRandomGender())
-                .typeUserNumber(userTest.userNumber);
+            registrationPage.setGenderContainer(userTest.setRandomGender())
+                    .typeUserNumber(userTest.userNumber);
         });
 
         step("Submit form", () -> {
@@ -65,7 +65,7 @@ public class NegativeTests extends TestBase{
     @Test
     @Story("Enter invalid user email")
     @Owner("denor1999")
-    void invalidEmailTest(){
+    void invalidEmailTest() {
         step("Open registration page", () -> {
             registrationPage.openPage();
         });

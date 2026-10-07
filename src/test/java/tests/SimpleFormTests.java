@@ -9,22 +9,22 @@ import static io.qameta.allure.Allure.step;
 import static testdata.TextBoxTestData.userEmailLocator;
 
 @Feature("Text box tests")
-public class SimpleFormTests extends TestBase{
+public class SimpleFormTests extends TestBase {
 
     @Test
     @Story("Enter form with minimum number of fields")
     @Owner("denor1999")
-    void minimumFieldsEnterTest(){
+    void minimumFieldsEnterTest() {
         step("Open text box page", () -> {
             textBoxPage.openPage();
         });
 
         step("Filling form", () -> {
-                textBoxPage.typeUserName(textBoxUserTest.userName);
+            textBoxPage.typeUserName(textBoxUserTest.userName);
         });
 
         step("Submit form", () -> {
-                textBoxPage.submitForm();
+            textBoxPage.submitForm();
         });
 
         step("Check registration results", () -> {
@@ -35,7 +35,7 @@ public class SimpleFormTests extends TestBase{
     @Test
     @Story("Enter form with invalid email")
     @Owner("denor1999")
-    void invalidEmailTest(){
+    void invalidEmailTest() {
         step("Open text box page", () -> {
             textBoxPage.openPage();
         });

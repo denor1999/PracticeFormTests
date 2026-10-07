@@ -13,7 +13,7 @@ public class SuccessfulEnterFormTests extends TestBase {
     @Test
     @Story("Enter form with a minimum number of fields")
     @Owner("denor1999")
-    void successEnterFormTest(){
+    void successEnterFormTest() {
 
         step("Open registration page", () -> {
             registrationPage.openPage();

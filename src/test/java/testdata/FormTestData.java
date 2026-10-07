@@ -24,18 +24,18 @@ public class FormTestData {
     public String year;
     public String currentAddress = faker.address().fullAddress();
     public String[] subjects = {"Physics",
-                                "Chemistry",
-                                "Commerce",
-                                "Economics",
-                                "English",
-                                "Arts",
-                                "Maths",
-                                "Computer Science",
-                                "Social studies",
-                                "History",
-                                "Accounting",
-                                "Hindi",
-                                "Civics"};
+            "Chemistry",
+            "Commerce",
+            "Economics",
+            "English",
+            "Arts",
+            "Maths",
+            "Computer Science",
+            "Social studies",
+            "History",
+            "Accounting",
+            "Hindi",
+            "Civics"};
     public String selectedSubject = setRandomSubject();
     public String[] hobbies = {"Sports", "Reading", "Music"};
     public String selectedHobby = setRandomHobbies();

@@ -14,7 +14,7 @@ public class StudentRegistrationFormTests extends TestBase {
     @Test
     @Story("E2E test")
     @Owner("denor1999")
-    void endToEndPositiveTest(){
+    void endToEndPositiveTest() {
 
         step("Open registration form", () -> {
             registrationPage.openPage();
@@ -26,7 +26,7 @@ public class StudentRegistrationFormTests extends TestBase {
                     .typeUserEmail(userTest.correctUserEmail)
                     .setGenderContainer(userTest.gender)
                     .typeUserNumber(userTest.userNumber)
-                    .setDateOfBirth(userTest.day, userTest.month, userTest.year)
+                    .setDateOfBirth(userTest.month, userTest.year)
                     .setSubjects(userTest.selectedSubject)
                     .setHobbies(userTest.selectedHobby)
                     .setPicture(userTest.picture)
