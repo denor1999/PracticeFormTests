@@ -63,11 +63,11 @@
 
 ## ▶️ Запуск из терминала
 Локальный запуск:
-```bash
+```shell
 gradle clean test -Dremote='%your_remote%' -Dbrowser=chrome -Dbrowser_version=148 -Dsize=1920x1080 -Dbase_url=https://demoqa.com -Dform_path=/automation-practice-form -Dtext_box_path=/text-box
 ```
 Удаленный запуск:
-```bash
+```shell
 clean test
 browser=$Browser
 browser_version=$Browser_Version
