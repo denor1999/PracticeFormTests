@@ -27,7 +27,6 @@
 <img src="images/icons/Allure_Report.png" width="50" />
 <img src="images/icons/Allure_TestOps.png" width="50" />
 <img src="images/icons/Telegram.png" width="50">
-<img src="images/icons/Jira.png" width="50" />
 </p>
 
 ---
